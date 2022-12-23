@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Compras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body onLoad="popularLista()">
+    <div class="conteudo">
+        <div class="somaPage">
+            <button class="btnLS" onclick="limparLocal()"><i class="fa fa-trash"></i></button>
+            <label id="resultNew">R$ 0,00</label>
+        </div>
+        <div class="topo">
+            <input type="text" id="qtdeNew" placeholder="Qtde" value="1">
+            <input type="text" id="produtoNew" placeholder="Produto">            
+            <input type="text" id="valorNew" placeholder="Valor" onkeypress="return event.charCode >= 46 && event.charCode <= 57">
+            <button id="confirmaNew" onclick="funcSalvar" ><i class="fa fa-plus"></i></button>
+            <button id="somarNew" onclick="somarTudo">Calcular</button>
+        </div>
+        <ul id="listaTarefas">
+        </ul>
+        <footer>
+            <p>Desenvolvido por <span class="detail"> Aderaldo Anderson S.V Amorim</span></p>
+        </footer>
+    <script src="/js/index.js"></script>
+</body>
+</html>
