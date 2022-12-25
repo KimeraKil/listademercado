@@ -24,32 +24,40 @@ inpQtde.addEventListener('keypress', (e) => {
     }
 });
 
-function funcSalvar(){
+function separarValores(chave){
+    var separarString = localStorage.getItem(chave);
+    const quebraTexto = separarString.split('-');
+    var moeda = parseFloat(quebraTexto[2])
+    console.log (moeda)
+    criarTagLI(chave, (quebraTexto[0]), (quebraTexto[1]),(moeda))
+}
 
+function funcSalvar(){
     if (localStorage.length == 0){
         if (inpValor.value == ""){
             alert('Campo Vazio')
         } else {
-        var somaQtde = inpQtde.value * inpValor.value
-        localStorage.setItem (1, somaQtde)
-        criarTagLI(1, somaQtde)
-        inpValor.value = ""
-        inpQtde.value = "1"
+            var somaQtde = inpQtde.value * inpValor.value
+            localStorage.setItem(1, inpProduto.value+'-'+inpQtde.value+'-'+ somaQtde.toFixed(2))
+            separarValores(1)
+            inpProduto.value = ""
+            inpValor.value = ""
+            inpQtde.value = "1"
         }
     } else {
         if (inpValor.value == ""){
             alert('Campo Vazio')
         } else {
-        var somaQtde = inpQtde.value * inpValor.value
-        localStorage.setItem (localStorage.length +1, somaQtde)
-        criarTagLI(localStorage.length, somaQtde)
-        inpValor.value = ""
-        inpQtde.value = "1"        
+            var somaQtde = inpQtde.value * inpValor.value;
+            localStorage.setItem(localStorage.length +1, inpProduto.value+'-'+inpQtde.value+'-'+somaQtde.toFixed(2))
+            separarValores(localStorage.length)
+            inpProduto.value = ""
+            inpValor.value = ""
+            inpQtde.value = "1"
         }
     }
 
     somarTudo()
-    
 }
 
 function limparLocal(){
@@ -60,7 +68,8 @@ function limparLocal(){
 function somarTudo(){
     var total = 0;
     for (var i = 1; i <= localStorage.length; i++){
-        total += parseFloat((localStorage.getItem(i)));  
+        var valor = localStorage.getItem(i).split('-')
+        total += parseFloat(valor[2]);
     }
 
     labelResult.innerText = 'Total: ' + (total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }))
@@ -69,8 +78,8 @@ function somarTudo(){
 function popularLista(){
     if (localStorage.length >= 1){
         for (var i = 1; i <= localStorage.length; i++){
-            var valor = parseFloat((localStorage.getItem(i)));
-            criarTagLI(i, valor)
+            var valorChave = localStorage.getItem(i).split('-')
+            criarTagLI(i, valorChave[0], valorChave[1], parseFloat(valorChave[2]))
             somarTudo()
             }
         } else {
@@ -79,14 +88,13 @@ function popularLista(){
 }
 
 
-function criarTagLI(id, valor){
-
+function criarTagLI(id, prodTex, qtdeTex, valor){
     let li = document.createElement('li');
     li.id = id;
-
+    var textoSpan = prodTex + ' '+'('+qtdeTex+')'+ ' ' + valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     let span = document.createElement('span');
     span.classList.add('textoTarefa');
-    span.innerHTML = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    span.innerHTML = textoSpan;
 
     let div  = document.createElement('div');
 
