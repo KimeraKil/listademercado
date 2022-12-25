@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body onLoad="popularLista()">
+    <h2>Calculadora de Compras</h2>
     <div class="conteudo">
         <div class="somaPage">
             <button class="btnLS" onclick="limparLocal()"><i class="fa fa-trash"></i></button>
             <label id="resultNew">R$ 0,00</label>
         </div>
         <div class="topo">
-            <input inputmode="numeric" type="text" id="qtdeNew" placeholder="Qtde" value="1">
             <input type="text" id="produtoNew" placeholder="Produto">            
-            <input inputmode="numeric" type="text" id="valorNew" placeholder="Valor" onkeypress="return event.charCode >= 46 && event.charCode <= 57">
+            <input type="text" id="qtdeNew" placeholder="Qtde" value="1">
+            <input type="text" id="valorNew" placeholder="Valor" onkeypress="return event.charCode >= 46 && event.charCode <= 57">
             <button id="confirmaNew" onclick="funcSalvar" ><i class="fa fa-plus"></i></button>
             <button id="somarNew" onclick="somarTudo">Calcular</button>
         </div>
