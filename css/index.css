@@ -1,33 +1,40 @@
 body{
-    background: #000;
+    background: rgb(0, 0, 0);
     color: #FFF;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
+    width: 100vw;
+}
+
+h2{
+    text-align: center;
 }
 .conteudo {
     margin: 0 auto;
-    width: 100%;;
-    max-width: 330px;
+    width: 98%;;
+    /*max-width: 330px;*/
     margin-top: 20px;
     margin-bottom: 50px;
     background: #2b2a2a;
     padding: 20px;
     border-radius: 12px;
+    box-sizing: border-box;
 }
 #somarNew{
     display: none;
 }
 #produtoNew{
-    display: none;
-    width: 20px;
+    display: block;
+    width: 50%;
+    text-align: left;
 }
 #qtdeNew{
-    width: 40px;
+    width: 10%;
     text-align: center;
 }
 #valorNew{
-    width: 160px;
+    width: 30%;
     text-align: center;
 }
 .topo {
@@ -36,7 +43,7 @@ body{
     margin-bottom: 35px;     
 }
 .topo input {
-    width: 250px;
+    /*width: 250px;*/
     padding: 15px;
     border-radius: 12px;
     border: 1px solid #191818;
@@ -46,7 +53,7 @@ body{
     color: #FFF;
 }
 .topo button {
-    width: 60px;
+    width: 10%;
     border-radius: 12px;
     border: 1px solid #191818;
     background: #191818;
@@ -71,7 +78,9 @@ body{
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    box-sizing: border-box;
 }
+
 .btnAcao {
     border-radius: 20px;
     border: 1px solid #191818;
