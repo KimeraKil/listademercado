@@ -81,6 +81,12 @@ h2{
     box-sizing: border-box;
 }
 
+.textoTarefa{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .btnAcao {
     border-radius: 20px;
     border: 1px solid #191818;
