@@ -92,9 +92,18 @@ function criarTagLI(id, prodTex, qtdeTex, valor){
     let li = document.createElement('li');
     li.id = id;
     var textoSpan = prodTex + ' '+'('+qtdeTex+')'+ ' ' + valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    let span = document.createElement('span');
-    span.classList.add('textoTarefa');
-    span.innerHTML = textoSpan;
+    let spanP = document.createElement('span');
+    let spanQ = document.createElement('span');
+    let spanV = document.createElement('span');
+    
+    spanP.classList.add('textoTarefa');
+    spanP.innerHTML = prodTex;
+
+    spanQ.classList.add('textoTarefa');
+    spanQ.innerHTML = '('+qtdeTex+')';
+    
+    spanV.classList.add('textoTarefa');
+    spanV.innerHTML = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     let div  = document.createElement('div');
 
@@ -106,7 +115,9 @@ function criarTagLI(id, prodTex, qtdeTex, valor){
     div.appendChild(btnExcluir);
 
     listaTarefas.appendChild(li)
-    li.appendChild(span);
+    li.appendChild(spanP);
+    li.appendChild(spanQ);
+    li.appendChild(spanV);
     li.appendChild(div);
     return li;
 }
